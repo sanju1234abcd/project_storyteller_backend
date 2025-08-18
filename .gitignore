@@ -1,0 +1,47 @@
+node_modules
+
+.env# Node modules
+node_modules/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Dependency directories
+jspm_packages/
+
+# Build directories
+dist/
+build/
+.cache/
+.next/
+out/
+coverage/
+
+# VSCode / IDE settings
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Optional npm/yarn/pnpm lock files (uncomment one if you don’t want it in repo)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
