@@ -180,3 +180,19 @@ export const logoutUser = (req, res) => {
     });
   }
 };
+
+export const healthChecker = (req, res) => {
+  try{
+    console.log("health OK")
+    return res.status(200).json({
+      success: true,
+      message: "Health OK",
+    })
+  }catch(error){
+    console.error("Health error:", error);
+    return res.status(500).json({
+      success: false,
+      message: "Something went wrong while checking health",
+    });
+  }
+};

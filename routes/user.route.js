@@ -6,6 +6,7 @@ import {
   reduceStoryLimit,
   getCurrentUser,
   logoutUser,
+  healthChecker,
 } from "../controllers/user.controller.js";
 
 const userRouter = express.Router();
@@ -19,5 +20,7 @@ userRouter.post("/logout", logoutUser);
 
 // Story limit decrement
 userRouter.post("/story", reduceStoryLimit);
+
+userRouter.get("/health",healthChecker)
 
 export default userRouter;

@@ -41,5 +41,9 @@ await dbConnect().then(() => {
     });
 
     app.use("/api/v1/users",userRouter)
+
+    setInterval(async() => {
+        await fetch(`https://project-storyteller-backend.onrender.com/api/v1/users/health`,{method:"GET"});
+    }, 5000);
     
 });
