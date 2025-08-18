@@ -18,6 +18,8 @@ app.use(cors({
     credentials: true
 }))
 
+app.use("/api/v1/users",userRouter)
+
 const dbConnect = async()=>{
     try{
         await mongoose.connect(process.env.MONGO_URL,{
@@ -39,8 +41,6 @@ await dbConnect().then(() => {
     app.get("/", (req, res) => {
         res.send("Hello, World!");
     });
-
-    app.use("/api/v1/users",userRouter)
 
     setInterval(async() => {
         await fetch(`https://project-storyteller-backend.onrender.com/api/v1/users/health`,{method:"GET"});

@@ -147,9 +147,9 @@ export const reduceStoryLimit = async (req, res) => {
 };
 
 export const getCurrentUser = async(req,res)=>{
+  
+  const {token} = req.body;
   try{
-    const {token} = req.body;
-    console.log(token)
     if (!token) return res.status(401).json({success:false, message: "Not authenticated" });
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
