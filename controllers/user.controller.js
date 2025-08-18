@@ -113,7 +113,7 @@ export const loginUser = async (req, res) => {
 // Reduce story limit
 export const reduceStoryLimit = async (req, res) => {
   try {
-    const token = req.cookies.token;
+    const {token} = req.body;
     if (!token) return res.status(401).json({success:false, message: "Not authenticated" });
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
@@ -148,7 +148,8 @@ export const reduceStoryLimit = async (req, res) => {
 
 export const getCurrentUser = async(req,res)=>{
   try{
-    const token = req.cookies.token;
+    const {token} = req.body;
+    console.log(token)
     if (!token) return res.status(401).json({success:false, message: "Not authenticated" });
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
