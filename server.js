@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser())
 
 app.use(cors({
-    origin: "https://virtual-storyteller-frontend.vercel.app/",
+    origin: "https://virtual-storyteller-frontend.vercel.app",
     credentials: true
 }))
 
