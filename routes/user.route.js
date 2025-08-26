@@ -8,6 +8,7 @@ import {
   logoutUser,
   healthChecker,
 } from "../controllers/user.controller.js";
+import { getStories, storyLinkCreate } from "../controllers/story.controller.js";
 
 const userRouter = express.Router();
 
@@ -20,6 +21,10 @@ userRouter.post("/logout", logoutUser);
 
 // Story limit decrement
 userRouter.post("/story", reduceStoryLimit);
+
+// Story Link create and save 
+userRouter.post("/storyLinkSave", storyLinkCreate);
+userRouter.post("/getStories", getStories);
 
 userRouter.get("/health",healthChecker)
 
