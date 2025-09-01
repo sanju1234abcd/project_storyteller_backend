@@ -156,6 +156,18 @@ export const getCurrentUser = async(req,res)=>{
     const user = await User.findById(decoded.id);
     if (!user) return res.status(404).json({success:false, message: "User not found" });
 
+    const nowIST = moment().tz("Asia/Kolkata");
+    const resetTime = moment(user.storyLimit.date).tz("Asia/Kolkata");
+
+    // reset if passed reset time (11:15 PM IST)
+    if (!user.storyLimit.date || nowIST.isSameOrAfter(resetTime)) {
+      user.storyLimit.remaining = 6;
+      let nextReset = moment().tz("Asia/Kolkata").set({ hour: 23, minute: 33, second: 0, millisecond: 0 });
+      if (nowIST.isAfter(nextReset)) nextReset.add(1, "day");
+      user.storyLimit.date = nextReset.toDate();
+      await user.save()
+    }
+
     res.json({success:true, message: "User found", user });
   }catch(err){
     res.status(500).json({success:false, message: "Error getting user", error: err.message });
